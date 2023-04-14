@@ -1,6 +1,8 @@
 # Sping demo
 
-## add properties
+## build for docker
+
+### add properties
 
 ```xml
     <properties>
@@ -9,7 +11,7 @@
     </properties>
 ```
 
-## add plugin
+### add plugin
 
 ```xml
             <plugin>
@@ -35,7 +37,7 @@
             </plugin>
 ```
 
-## Build
+### Build
 
 ```shell
 $ mvn install dockerfile:build
@@ -50,10 +52,22 @@ $ curl 127.0.0.1:8080
 Hello World.This is an example of a spring docker
 ```
 
-## Apple Silicon M1 CPU
+### Apple Silicon M1 CPU
 
 ```shell
 $ brew install socat
 $ nohup socat TCP-LISTEN:2375,range=127.0.0.1/32,reuseaddr,fork UNIX-CLIENT:/var/run/docker.sock &> /dev/null &
 $ export DOCKER_HOST=tcp://127.0.0.1:2375
 ```
+
+## use apollo
+
+TODO
+
+## use eureka
+
+TODO
+
+## use kubernetes serviceaccont
+
+TODO
