@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.bohai.helloworld.HelloworldApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.244 s <<< FAILURE! - in com.bohai.helloworld.HelloworldApplicationTests
+contextLoads(com.bohai.helloworld.HelloworldApplicationTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalArgumentException: Cannot instantiate interface org.springframework.context.ApplicationContextInitializer : com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer]: Constructor threw exception; nested exception is com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to load instance for com.ctrip.framework.apollo.spring.config.ConfigPropertySourceFactory!
+Caused by: com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to load instance for com.ctrip.framework.apollo.spring.config.ConfigPropertySourceFactory!
+Caused by: com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to initialize Apollo Spring Injector!
+Caused by: com.google.common.util.concurrent.ExecutionError: java.lang.ExceptionInInitializerError
+Caused by: java.lang.ExceptionInInitializerError
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @fe48b45
+

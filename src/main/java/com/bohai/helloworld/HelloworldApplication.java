@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import com.ctrip.framework.apollo.ConfigService;
 
 @SpringBootApplication
 @RestController
@@ -21,4 +23,13 @@ public class HelloworldApplication {
                 "This is an example of a spring docker\n";
     }
 
+    @RestController
+    @RequestMapping(path = "/configurations")
+    public class ApolloConfigurationController {
+
+        @RequestMapping(path = "/{key}")
+        public String getConfigForKey(@PathVariable("key") String key){
+            return ConfigService.getAppConfig().getProperty(key, "undefined");
+        }
+    }
 }

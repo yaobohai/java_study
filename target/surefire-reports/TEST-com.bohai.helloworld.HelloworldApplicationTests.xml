@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.bohai.helloworld.HelloworldApplicationTests" time="0.244" tests="1" errors="1" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/test-classes:/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/classes:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-web/2.1.3.RELEASE/spring-boot-starter-web-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter/2.1.3.RELEASE/spring-boot-starter-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot/2.1.3.RELEASE/spring-boot-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.1.3.RELEASE/spring-boot-autoconfigure-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.1.3.RELEASE/spring-boot-starter-logging-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/sunday/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/sunday/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.11.2/log4j-to-slf4j-2.11.2.jar:/Users/sunday/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar:/Users/sunday/.m2/repository/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar:/Users/sunday/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.1.3.RELEASE/spring-boot-starter-json-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.8/jackson-datatype-jdk8-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.8/jackson-datatype-jsr310-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.8/jackson-module-parameter-names-2.9.8.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/2.1.3.RELEASE/spring-boot-starter-tomcat-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.16/tomcat-embed-core-9.0.16.jar:/Users/sunday/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.16/tomcat-embed-el-9.0.16.jar:/Users/sunday/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.16/tomcat-embed-websocket-9.0.16.jar:/Users/sunday/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.14.Final/hibernate-validator-6.0.14.Final.jar:/Users/sunday/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar:/Users/sunday/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/Users/sunday/.m2/repository/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar:/Users/sunday/.m2/repository/org/springframework/spring-web/5.1.5.RELEASE/spring-web-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-beans/5.1.5.RELEASE/spring-beans-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-webmvc/5.1.5.RELEASE/spring-webmvc-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-aop/5.1.5.RELEASE/spring-aop-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-context/5.1.5.RELEASE/spring-context-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-expression/5.1.5.RELEASE/spring-expression-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/com/ctrip/framework/apollo/apollo-client/1.7.0/apollo-client-1.7.0.jar:/Users/sunday/.m2/repository/com/ctrip/framework/apollo/apollo-core/1.7.0/apollo-core-1.7.0.jar:/Users/sunday/.m2/repository/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar:/Users/sunday/.m2/repository/com/google/guava/guava/19.0/guava-19.0.jar:/Users/sunday/.m2/repository/com/google/inject/guice/4.1.0/guice-4.1.0.jar:/Users/sunday/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/sunday/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/sunday/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/Users/sunday/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-test/2.1.3.RELEASE/spring-boot-starter-test-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-test/2.1.3.RELEASE/spring-boot-test-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/2.1.3.RELEASE/spring-boot-test-autoconfigure-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar:/Users/sunday/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar:/Users/sunday/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar:/Users/sunday/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar:/Users/sunday/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/sunday/.m2/repository/org/assertj/assertj-core/3.11.1/assertj-core-3.11.1.jar:/Users/sunday/.m2/repository/org/mockito/mockito-core/2.23.4/mockito-core-2.23.4.jar:/Users/sunday/.m2/repository/net/bytebuddy/byte-buddy/1.9.10/byte-buddy-1.9.10.jar:/Users/sunday/.m2/repository/net/bytebuddy/byte-buddy-agent/1.9.10/byte-buddy-agent-1.9.10.jar:/Users/sunday/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/Users/sunday/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/sunday/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar:/Users/sunday/.m2/repository/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar:/Users/sunday/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/sunday/.m2/repository/org/springframework/spring-core/5.1.5.RELEASE/spring-core-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-jcl/5.1.5.RELEASE/spring-jcl-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-test/5.1.5.RELEASE/spring-test-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/xmlunit/xmlunit-core/2.6.2/xmlunit-core-2.6.2.jar:/Users/sunday/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar:/Users/sunday/.m2/repository/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/surefire/surefirebooter3586247147792388008.jar /Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/surefire 2023-04-21T15-06-48_742-jvmRun1 surefire18212602531933472523tmp surefire_01937973818934020844tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/test-classes:/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/classes:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-web/2.1.3.RELEASE/spring-boot-starter-web-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter/2.1.3.RELEASE/spring-boot-starter-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot/2.1.3.RELEASE/spring-boot-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.1.3.RELEASE/spring-boot-autoconfigure-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.1.3.RELEASE/spring-boot-starter-logging-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/sunday/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/sunday/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.11.2/log4j-to-slf4j-2.11.2.jar:/Users/sunday/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar:/Users/sunday/.m2/repository/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar:/Users/sunday/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.1.3.RELEASE/spring-boot-starter-json-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.8/jackson-datatype-jdk8-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.8/jackson-datatype-jsr310-2.9.8.jar:/Users/sunday/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.8/jackson-module-parameter-names-2.9.8.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/2.1.3.RELEASE/spring-boot-starter-tomcat-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.16/tomcat-embed-core-9.0.16.jar:/Users/sunday/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.16/tomcat-embed-el-9.0.16.jar:/Users/sunday/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.16/tomcat-embed-websocket-9.0.16.jar:/Users/sunday/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.14.Final/hibernate-validator-6.0.14.Final.jar:/Users/sunday/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar:/Users/sunday/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/Users/sunday/.m2/repository/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar:/Users/sunday/.m2/repository/org/springframework/spring-web/5.1.5.RELEASE/spring-web-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-beans/5.1.5.RELEASE/spring-beans-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-webmvc/5.1.5.RELEASE/spring-webmvc-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-aop/5.1.5.RELEASE/spring-aop-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-context/5.1.5.RELEASE/spring-context-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-expression/5.1.5.RELEASE/spring-expression-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/com/ctrip/framework/apollo/apollo-client/1.7.0/apollo-client-1.7.0.jar:/Users/sunday/.m2/repository/com/ctrip/framework/apollo/apollo-core/1.7.0/apollo-core-1.7.0.jar:/Users/sunday/.m2/repository/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar:/Users/sunday/.m2/repository/com/google/guava/guava/19.0/guava-19.0.jar:/Users/sunday/.m2/repository/com/google/inject/guice/4.1.0/guice-4.1.0.jar:/Users/sunday/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/sunday/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/sunday/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/Users/sunday/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-starter-test/2.1.3.RELEASE/spring-boot-starter-test-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-test/2.1.3.RELEASE/spring-boot-test-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/2.1.3.RELEASE/spring-boot-test-autoconfigure-2.1.3.RELEASE.jar:/Users/sunday/.m2/repository/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar:/Users/sunday/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar:/Users/sunday/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar:/Users/sunday/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar:/Users/sunday/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/sunday/.m2/repository/org/assertj/assertj-core/3.11.1/assertj-core-3.11.1.jar:/Users/sunday/.m2/repository/org/mockito/mockito-core/2.23.4/mockito-core-2.23.4.jar:/Users/sunday/.m2/repository/net/bytebuddy/byte-buddy/1.9.10/byte-buddy-1.9.10.jar:/Users/sunday/.m2/repository/net/bytebuddy/byte-buddy-agent/1.9.10/byte-buddy-agent-1.9.10.jar:/Users/sunday/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/Users/sunday/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/sunday/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar:/Users/sunday/.m2/repository/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar:/Users/sunday/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/sunday/.m2/repository/org/springframework/spring-core/5.1.5.RELEASE/spring-core-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-jcl/5.1.5.RELEASE/spring-jcl-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/springframework/spring-test/5.1.5.RELEASE/spring-test-5.1.5.RELEASE.jar:/Users/sunday/.m2/repository/org/xmlunit/xmlunit-core/2.6.2/xmlunit-core-2.6.2.jar:/Users/sunday/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar:/Users/sunday/.m2/repository/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/sunday"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2021-10-19"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/surefire/surefirebooter3586247147792388008.jar"/>
+    <property name="user.script" value="Hans"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
+    <property name="user.name" value="sunday"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="13.3.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/sunday/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/01/mpxsm23n2077ys4yyfm5z2dm0000gn/T/"/>
+    <property name="java.version" value="17.0.1"/>
+    <property name="user.dir" value="/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/sunday/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.1+12-LTS-39"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="contextLoads" classname="com.bohai.helloworld.HelloworldApplicationTests" time="0.001">
+    <error message="Failed to load ApplicationContext" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalArgumentException: Cannot instantiate interface org.springframework.context.ApplicationContextInitializer : com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer]: Constructor threw exception; nested exception is com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to load instance for com.ctrip.framework.apollo.spring.config.ConfigPropertySourceFactory!
+Caused by: com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to load instance for com.ctrip.framework.apollo.spring.config.ConfigPropertySourceFactory!
+Caused by: com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to initialize Apollo Spring Injector!
+Caused by: com.google.common.util.concurrent.ExecutionError: java.lang.ExceptionInInitializerError
+Caused by: java.lang.ExceptionInInitializerError
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @fe48b45
+</error>
+    <system-out><![CDATA[15:06:48.989 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.bohai.helloworld.HelloworldApplicationTests]
+15:06:48.991 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+15:06:48.994 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+15:06:49.001 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.bohai.helloworld.HelloworldApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+15:06:49.006 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.bohai.helloworld.HelloworldApplicationTests], using SpringBootContextLoader
+15:06:49.008 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.bohai.helloworld.HelloworldApplicationTests]: class path resource [com/bohai/helloworld/HelloworldApplicationTests-context.xml] does not exist
+15:06:49.008 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.bohai.helloworld.HelloworldApplicationTests]: class path resource [com/bohai/helloworld/HelloworldApplicationTestsContext.groovy] does not exist
+15:06:49.008 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.bohai.helloworld.HelloworldApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:06:49.008 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.bohai.helloworld.HelloworldApplicationTests]: HelloworldApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:06:49.023 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.052 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/sunday/workspace/worker/java_demo/dockerfile-maven-plugin-demo/target/classes/com/bohai/helloworld/HelloworldApplication.class]
+15:06:49.052 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.bohai.helloworld.HelloworldApplication for test class com.bohai.helloworld.HelloworldApplicationTests
+15:06:49.081 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.bohai.helloworld.HelloworldApplicationTests]: using defaults.
+15:06:49.081 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+15:06:49.085 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+15:06:49.085 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+15:06:49.085 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6a84a97d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6c130c45, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@50ad3bc1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@223aa2f7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6d3a388c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@193f604a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@20f5239f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@57af006c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6bedbc4d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@932bc4a]
+15:06:49.086 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.086 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.086 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.086 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.086 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.086 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.087 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@fba92d3 testClass = HelloworldApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@662b4c69 testClass = HelloworldApplicationTests, locations = '{}', classes = '{class com.bohai.helloworld.HelloworldApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@36f0f1be, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@55040f2f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@123f1134, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@358c99f5], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+15:06:49.087 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.087 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.bohai.helloworld.HelloworldApplicationTests]
+15:06:49.157 [main] ERROR org.springframework.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@6a84a97d] to prepare test instance [com.bohai.helloworld.HelloworldApplicationTests@3f9342d4]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:108)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+Caused by: java.lang.IllegalArgumentException: Cannot instantiate interface org.springframework.context.ApplicationContextInitializer : com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer
+	at org.springframework.boot.SpringApplication.createSpringFactoriesInstances(SpringApplication.java:450)
+	at org.springframework.boot.SpringApplication.getSpringFactoriesInstances(SpringApplication.java:429)
+	at org.springframework.boot.SpringApplication.getSpringFactoriesInstances(SpringApplication.java:420)
+	at org.springframework.boot.SpringApplication.<init>(SpringApplication.java:268)
+	at org.springframework.boot.SpringApplication.<init>(SpringApplication.java:249)
+	at org.springframework.boot.test.context.SpringBootContextLoader.getSpringApplication(SpringBootContextLoader.java:136)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:93)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117)
+	... 27 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer]: Constructor threw exception; nested exception is com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to load instance for com.ctrip.framework.apollo.spring.config.ConfigPropertySourceFactory!
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
+	at org.springframework.boot.SpringApplication.createSpringFactoriesInstances(SpringApplication.java:446)
+	... 35 common frames omitted
+Caused by: com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to load instance for com.ctrip.framework.apollo.spring.config.ConfigPropertySourceFactory!
+	at com.ctrip.framework.apollo.spring.util.SpringInjector.getInstance(SpringInjector.java:40)
+	at com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer.<init>(ApolloApplicationContextInitializer.java:67)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:172)
+	... 36 common frames omitted
+Caused by: com.ctrip.framework.apollo.exceptions.ApolloConfigException: Unable to initialize Apollo Spring Injector!
+	at com.ctrip.framework.apollo.spring.util.SpringInjector.getInjector(SpringInjector.java:24)
+	at com.ctrip.framework.apollo.spring.util.SpringInjector.getInstance(SpringInjector.java:37)
+	... 43 common frames omitted
+Caused by: com.google.common.util.concurrent.ExecutionError: java.lang.ExceptionInInitializerError
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2205)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3953)
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:3957)
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:4875)
+	at com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:4881)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:48)
+	at com.google.inject.internal.ConstructorInjectorStore.get(ConstructorInjectorStore.java:50)
+	at com.google.inject.internal.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:138)
+	at com.google.inject.internal.InjectorImpl.initializeBinding(InjectorImpl.java:536)
+	at com.google.inject.internal.AbstractBindingProcessor$Processor$1.run(AbstractBindingProcessor.java:160)
+	at com.google.inject.internal.ProcessedBindingData.initializeBindings(ProcessedBindingData.java:44)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:123)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:107)
+	at com.google.inject.Guice.createInjector(Guice.java:99)
+	at com.google.inject.Guice.createInjector(Guice.java:73)
+	at com.google.inject.Guice.createInjector(Guice.java:62)
+	at com.ctrip.framework.apollo.spring.util.SpringInjector.getInjector(SpringInjector.java:22)
+	... 44 common frames omitted
+Caused by: java.lang.ExceptionInInitializerError: null
+	at com.google.inject.internal.cglib.reflect.$FastClass$Generator.getProtectionDomain(FastClass.java:73)
+	at com.google.inject.internal.cglib.core.$AbstractClassGenerator.create(AbstractClassGenerator.java:206)
+	at com.google.inject.internal.cglib.reflect.$FastClass$Generator.create(FastClass.java:65)
+	at com.google.inject.internal.BytecodeGen.newFastClassForMember(BytecodeGen.java:252)
+	at com.google.inject.internal.BytecodeGen.newFastClassForMember(BytecodeGen.java:203)
+	at com.google.inject.internal.DefaultConstructionProxyFactory.create(DefaultConstructionProxyFactory.java:53)
+	at com.google.inject.internal.ProxyFactory.create(ProxyFactory.java:158)
+	at com.google.inject.internal.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:90)
+	at com.google.inject.internal.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:29)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:37)
+	at com.google.inject.internal.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:33)
+	at com.google.inject.internal.FailableCache$1.load(FailableCache.java:37)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3542)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2323)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2286)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2201)
+	... 60 common frames omitted
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @fe48b45
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at com.google.inject.internal.cglib.core.$ReflectUtils$1.run(ReflectUtils.java:52)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+	at com.google.inject.internal.cglib.core.$ReflectUtils.<clinit>(ReflectUtils.java:42)
+	... 76 common frames omitted
+]]></system-out>
+  </testcase>
+</testsuite>
