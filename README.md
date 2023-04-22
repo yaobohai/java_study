@@ -91,7 +91,94 @@ $ export DOCKER_HOST=tcp://127.0.0.1:2375
 
 ## use apollo
 
-TODO
+### deploy apollo for docker
+
+```shell
+# --net=host 
+version=latest
+docker pull apolloconfig/apollo-configservice:${version}
+docker rm -f apollo-configservice
+docker run --net=host \
+    -e SPRING_DATASOURCE_URL="jdbc:mysql://xxxx:3306/ApolloConfigDB?characterEncoding=utf8" \
+    -e SPRING_DATASOURCE_USERNAME=apollo -e SPRING_DATASOURCE_PASSWORD=xxxx \
+    -d -v /data/apollo/configservice/logs:/opt/logs --name apollo-configservice apolloconfig/apollo-configservice:${version}
+
+version=latest
+docker pull apolloconfig/apollo-adminservice:${version}
+docker rm -f apollo-adminservice
+docker run -p 8090:8090 \
+    -e SPRING_DATASOURCE_URL="jdbc:mysql://xxxx:3306/ApolloConfigDB?characterEncoding=utf8" \
+    -e SPRING_DATASOURCE_USERNAME=apollo -e SPRING_DATASOURCE_PASSWORD=xxxx \
+    -d -v /data/apollo/adminservice/logs:/opt/logs --name apollo-adminservice apolloconfig/apollo-adminservice:${version}
+
+version=latest
+docker pull apolloconfig/apollo-portal:${version}
+docker rm -f apollo-portal
+docker run -p 8070:8070 \
+    -e SPRING_DATASOURCE_URL="jdbc:mysql://xxxx:3306/ApolloPortalDB?characterEncoding=utf8" \
+    -e SPRING_DATASOURCE_USERNAME=apollo -e SPRING_DATASOURCE_PASSWORD=xxxxx \
+    -e APOLLO_PORTAL_ENVS=dev \
+    -e DEV_META=http://192.168.60.229:8080 \
+    -e SPRING.PROFILES.ACTIVE=github \
+    -d -v /data/apollo/portal/logs:/opt/logs --name apollo-portal apolloconfig/apollo-portal:${version}
+```
+
+### add dependency
+
+```xml
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+```
+
+### add route for RequestMapping
+
+```shell
+package com.bohai.helloworld;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import com.ctrip.framework.apollo.ConfigService;
+
+@SpringBootApplication
+@RestController
+public class HelloworldApplication {
+    @RestController
+    @RequestMapping(path = "/configurations")
+    public class ApolloConfigurationController {
+
+        @RequestMapping(path = "/{key}")
+        public String getConfigForKey(@PathVariable("key") String key){
+            return ConfigService.getAppConfig().getProperty(key, "undefined");
+        }
+    }
+}
+```
+
+### add properties
+
+file path: src/main/resources/application.properties
+
+```shell
+app.id=9025.uni-all-server.uni.ytzh
+# apollo eureka url
+apollo.meta=http://192.168.60.229:8080
+
+apollo.bootstrap.enabled = true
+apollo.bootstrap.eagerLoad.enabled=false
+```
+
+### requests
+
+```shell
+curl http://127.0.0.1/configurations/{name}
+```
 
 ## use eureka
 
