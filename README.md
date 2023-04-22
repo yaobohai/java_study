@@ -93,6 +93,25 @@ $ export DOCKER_HOST=tcp://127.0.0.1:2375
 
 ### deploy apollo for docker
 
+#### 一、create_db
+
+```shell
+CREATE USER 'apollo'@'%' identified BY 'xxxxxxxxxx';
+CREATE DATABASE IF NOT EXISTS ApolloConfigDB DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS ApolloPortalDB DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+GRANT ALL PRIVILEGES ON ApolloConfigDB.* TO apollo@"%"; 
+GRANT ALL PRIVILEGES ON ApolloPortalDB.* TO apollo@"%"; 
+```
+
+#### 二、init_db
+
+```shell
+# import sql file
+apolloconfigdb: https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloconfigdb.sql
+apolloportaldb: https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloportaldb.sql
+```
+
+#### 三、deploy 
 ```shell
 # --net=host 
 version=latest
@@ -123,7 +142,7 @@ docker run -p 8070:8070 \
     -d -v /data/apollo/portal/logs:/opt/logs --name apollo-portal apolloconfig/apollo-portal:${version}
 ```
 
-### add dependency
+### add dependency with pom
 
 ```xml
         <dependency>
@@ -161,7 +180,7 @@ public class HelloworldApplication {
 }
 ```
 
-### add properties
+### add properties config file
 
 file path: src/main/resources/application.properties
 
