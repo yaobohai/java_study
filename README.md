@@ -195,6 +195,43 @@ apollo.bootstrap.eagerLoad.enabled=false
 curl http://127.0.0.1/config/{name}
 ```
 
+## use actuator
+
+### add dependency with pom
+
+```xml
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+```
+
+### add config
+
+src/main/resources/application.yml
+
+```yaml
+management:
+  server:
+    port: 8443
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+```
+
+### request
+
+```shell
+curl http://127.0.0.1:8443/actuator/
+```
+
 ## use eureka
 
 TODO
