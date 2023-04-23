@@ -152,29 +152,25 @@ docker run -p 8070:8070 \
         </dependency>
 ```
 
-### add route for RequestMapping
+### add new class: ApolloApplocation
 
 ```shell
 package com.bohai.helloworld;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
 import com.ctrip.framework.apollo.ConfigService;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
 @RestController
-public class HelloworldApplication {
+public class ApolloApplocation {
     @RestController
-    @RequestMapping(path = "/configurations")
+    @RequestMapping(path = "/config/")
     public class ApolloConfigurationController {
 
         @RequestMapping(path = "/{key}")
         public String getConfigForKey(@PathVariable("key") String key){
-            return ConfigService.getAppConfig().getProperty(key, "undefined");
+            return ConfigService.getAppConfig().getProperty( key, "undefined");
         }
     }
 }
@@ -196,7 +192,7 @@ apollo.bootstrap.eagerLoad.enabled=false
 ### requests
 
 ```shell
-curl http://127.0.0.1/configurations/{name}
+curl http://127.0.0.1/config/{name}
 ```
 
 ## use eureka

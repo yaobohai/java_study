@@ -22,14 +22,4 @@ public class HelloworldApplication {
         return "Hello World." +
                 "This is an example of a spring docker\n";
     }
-
-    @RestController
-    @RequestMapping(path = "/configurations")
-    public class ApolloConfigurationController {
-
-        @RequestMapping(path = "/{key}")
-        public String getConfigForKey(@PathVariable("key") String key){
-            return ConfigService.getAppConfig().getProperty(key, "undefined");
-        }
-    }
 }
