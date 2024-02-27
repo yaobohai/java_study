@@ -1,4 +1,4 @@
-# Sping demo
+# springboot demo
 
 ## build for docker
 
