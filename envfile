@@ -1,0 +1,5 @@
+Xmx=1024m
+Xms=512m
+Xmn=256m
+Xml=128m
+JAVA_JAR=-Duser.language=zh -Duser.country=CN -Duser.timezone=Asia/Shanghai -XX:MetaspaceSize=256m -XX:SurvivorRatio=8 -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps  -XX:+PrintGCCause -Xloggc:/apache-tomcat/logs/gc.log  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/apache-tomcat/logs/error.dump

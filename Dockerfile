@@ -1,5 +1,10 @@
-FROM openjdk:8u191-jre-alpine3.9
-ENTRYPOINT ["/usr/bin/java", "-jar", "/app.jar"]
-ARG JAR_FILE
-ADD ${JAR_FILE} /app.jar
-EXPOSE 8080
+FROM registry.cn-hangzhou.aliyuncs.com/bohai_repo/openjdk:8u191-jre-alpine3.9
+
+EXPOSE 8080 8443
+WORKDIR /opt/app
+
+ADD target/demo-*.jar /opt/app/app.jar
+ADD docker-entrypoint.sh /opt/app/
+RUN chmod +x /opt/app/docker-entrypoint.sh
+
+CMD ["sh", "/opt/app/docker-entrypoint.sh"]
