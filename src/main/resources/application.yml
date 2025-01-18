@@ -13,6 +13,6 @@ management:
       enabled: true
     health:
       show-details: always
-apollo:
-  accesskey:
-    secret: "d8e0cedd11c27a24cb71f3d627919e6acf130e60"
+#apollo:
+#  accesskey:
+#    secret: "d8e0cedd11c27a24cb71f3d627919e6acf130e60"
