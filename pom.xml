@@ -13,10 +13,10 @@
     <version>1.0.0-SNAPSHOT</version>
     <name>demo-service</name>
     <description>Spingboot的Web示例</description>
-<!--    <properties>-->
-<!--        <java.version>1.8</java.version>-->
-<!--        <docker.repostory>registry.cn-hangzhou.aliyuncs.com/bohai_repo</docker.repostory>-->
-<!--    </properties>-->
+    <properties>
+        <docker-maven-plugin.version>0.4.10</docker-maven-plugin.version>
+        <docker.registry>registry.cn-hangzhou.aliyuncs.com</docker.registry>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -26,11 +26,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.ctrip.framework.apollo</groupId>-->
-<!--            <artifactId>apollo-client</artifactId>-->
-<!--            <version>1.1.0</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -38,40 +33,87 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
+<profiles>
+    <profile>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+        </profile>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <executions>
+                    <!-- 构建动作列表 -->
+                    <execution>
+                        <!-- 构建镜像动作 -->
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                        <configuration>
+                            <!---dockerfile的路径-->
+                            <dockerDirectory>${project.basedir}/src/main/java/com/bohai/docker</dockerDirectory>
+                            <!-- 这里的xxx替换为需要推送的镜像仓库namespace -->
+                            <imageName>
+                                ${docker.registry}/bohai_repo/${project.artifactId}  <!-- 镜像名 -->
+                            </imageName>
+                            <imageTags>
+                                <!-- 镜像tag，支持多个tag -->
+                                <imageTag>${project.version}</imageTag>
+                            </imageTags>
+                           <resources>
+                               <resource>
+                                   <targetPath>/</targetPath>
+                                   <directory>${project.build.directory}</directory>
+                                   <include>
+                                       ${project.build.finalName}.jar
+                                   </include>
+                               </resource>
+                           </resources>
+                            <buildArgs>
+                                <!-- 构建出jar包制品位置 -->
+                                <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                            </buildArgs>
+                            <forceTags>true</forceTags>
+                            <labels>
+                                <label>VERSION=${project.version}</label>
+                            </labels>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- 推送镜像动作 将构建好的镜像制品推送到镜像仓库 -->
+                        <id>push-image</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 对应maven settings.xml的server id -->
+                            <serverId>docker-registry-aliyun</serverId>
+                            <imageName>
+                                 <!--需要push到仓库的镜像，目前只支持一个,这里的xxx替换为需要推送的镜像仓库namespace -->
+                                ${docker.registry}/bohai_repo/${project.artifactId}:${project.version}
+                            </imageName>
+                            <registryUrl>https://${docker.registry}</registryUrl>
+                            <!-- 失败重试次数以及超时时间 -->
+                            <retryPushCount>3</retryPushCount>
+                            <retryPushTimeout>60</retryPushTimeout>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-<!--            <plugin>-->
-<!--                <groupId>com.spotify</groupId>-->
-<!--                <artifactId>dockerfile-maven-plugin</artifactId>-->
-<!--                <version>1.4.10</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>default</id>-->
-<!--                        <goals>-->
-<!--                            <goal>build</goal>-->
-<!--                            <goal>push</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <repository>${docker.repostory}/${project.artifactId}</repository>-->
-<!--                    <tag>${project.version}</tag>-->
-<!--                    <buildArgs>-->
-<!--                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>-->
-<!--                    </buildArgs>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
+    </profiles>
 </project>
