@@ -32,88 +32,104 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-<profiles>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
     <profile>
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-        </profile>
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <executions>
-                    <!-- 构建动作列表 -->
-                    <execution>
-                        <!-- 构建镜像动作 -->
-                        <id>build-image</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                        <configuration>
-                            <!---dockerfile的路径-->
-                            <dockerDirectory>${project.basedir}/src/main/java/com/bohai/docker</dockerDirectory>
-                            <!-- 这里的xxx替换为需要推送的镜像仓库namespace -->
-                            <imageName>
-                                ${docker.registry}/bohai_repo/${project.artifactId}  <!-- 镜像名 -->
-                            </imageName>
-                            <imageTags>
-                                <!-- 镜像tag，支持多个tag -->
-                                <imageTag>${project.version}</imageTag>
-                            </imageTags>
-                           <resources>
-                               <resource>
-                                   <targetPath>/</targetPath>
-                                   <directory>${project.build.directory}</directory>
-                                   <include>
-                                       ${project.build.finalName}.jar
-                                   </include>
-                               </resource>
-                           </resources>
-                            <buildArgs>
-                                <!-- 构建出jar包制品位置 -->
-                                <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                            </buildArgs>
-                            <forceTags>true</forceTags>
-                            <labels>
-                                <label>VERSION=${project.version}</label>
-                            </labels>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <!-- 推送镜像动作 将构建好的镜像制品推送到镜像仓库 -->
-                        <id>push-image</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>push</goal>
-                        </goals>
-                        <configuration>
-                            <!-- 对应maven settings.xml的server id -->
-                            <serverId>docker-registry-aliyun</serverId>
-                            <imageName>
-                                 <!--需要push到仓库的镜像，目前只支持一个,这里的xxx替换为需要推送的镜像仓库namespace -->
-                                ${docker.registry}/bohai_repo/${project.artifactId}:${project.version}
-                            </imageName>
-                            <registryUrl>https://${docker.registry}</registryUrl>
-                            <!-- 失败重试次数以及超时时间 -->
-                            <retryPushCount>3</retryPushCount>
-                            <retryPushTimeout>60</retryPushTimeout>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+      <id>deploy</id>
+      <activation>
+        <property>
+          <name>deploy</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <configuration>
+              <skip>false</skip>
+            </configuration>
+          </plugin>
         </plugins>
-    </build>
-    </profiles>
+      </build>
+    </profile>
+
+    <profile>
+      <id>docker</id>
+      <activation>
+        <property>
+          <name>docker</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>build-image</id>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+                <phase>package</phase>
+                <configuration>
+                  <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                  <!-- 镜像名 -->
+                  <imageName>${docker.registry}/bohai_repo/${project.artifactId}</imageName>
+                   <!-- 镜像tag，支持多个tag -->
+                  <imageTags>
+                    <imageTag>${project.version}</imageTag>
+                  </imageTags>
+                  <forceTags>true</forceTags>
+                  <!-- dockerfile中的ARG参数 -->
+                  <labels>
+                    <label>VERSION=${project.version}</label>
+                  </labels>
+                  <resources>
+                    <resource>
+                      <targetPath>/</targetPath>
+                      <directory>${project.build.directory}</directory>
+                      <include>${project.artifactId}-${project.version}-shaded.jar</include>
+                      <!-- 将制品添加到docker build context -->
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+              <execution>
+                <id>push-image</id>
+                <goals>
+                  <goal>push</goal>
+                </goals>
+                <phase>deploy</phase>
+                <configuration>
+                    <!-- 对应maven settings.xml的server id -->
+                    <serverId>docker-registry-aliyun</serverId>
+                   <!--需要push到仓库的镜像，目前只支持一个 -->
+                  <imageName>
+                   ${docker.registry}/bohai_repo/${project.artifactId}:${project.version}
+                  </imageName>
+                  <registryUrl>https://${docker.registry}</registryUrl>
+                  <retryPushCount>3</retryPushCount>
+                  <retryPushTimeout>60</retryPushTimeout>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
 </project>

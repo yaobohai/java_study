@@ -1,241 +1,101 @@
-# springboot demo
+## java springboot devops
 
-## build for docker
-
-### add properties
-
-```xml
-    <properties>
-        <java.version>1.8</java.version>
-        <docker.repostory>registry.cn-hangzhou.aliyuncs.com/bohai_repo</docker.repostory>
-    </properties>
-```
-
-### add plugin
-
-```xml
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.10</version>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>push</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <repository>${docker.repostory}/${project.artifactId}</repository>
-                    <tag>${project.version}</tag>
-                    <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
-                </configuration>
-            </plugin>
-```
-
-### add dockerfile
-
-```dockerfile
-FROM openjdk:8u191-jre-alpine3.9
-ENTRYPOINT ["/usr/bin/java", "-jar", "/app.jar"]
-ARG JAR_FILE
-ADD ${JAR_FILE} /app.jar
-EXPOSE 8080
-```
-
-### Build
+### 目录结构
 
 ```shell
-$ mvn install dockerfile:build
-
-// list images
-$ docker images registry.cn-hangzhou.aliyuncs.com/bohai_repo/demo:1.0.0-SNAPSHOT
-
-// start images
-$ docker run -it --rm -p 8080:8080 registry.cn-hangzhou.aliyuncs.com/bohai_repo/demo:1.0.0-SNAPSHOT
-
-$ curl 127.0.0.1:8080
-Hello World.This is an example of a spring docker
+. 
+# 编译工程所使用的pom文件
+├── pom.xml
+└── src
+    └── main
+        # 存储dockerfile以及启动jar的脚本
+        ├── docker
+        │   ├── Dockerfile
+        │   └── docker-entrypoint.sh
+        # java源代码
+        ├── java
+        │   └── com
+        │       └── bohai
+        │           └── demo
+        │               └── service
+        │                   └── main.java
+        # 程序启动配置文件
+        └── resources
+            └── application.properties
+            
 ```
 
-### Build and Push
+## 集成devops
+
+### 监控(Actuator)
+
+参考：https://init.ac/2025/04/27/springboot-actuator/
+
+### 构建docker镜像
+
+参考：https://init.ac/2025/04/30/docker-maven-plugin/
+
+## 编译使用
+
+仅编译jar包
 
 ```shell
-$ mvn install dockerfile:push
-
-[INFO] --- dockerfile:1.4.10:push (default-cli) @ demo ---
-[INFO] The push refers to repository [registry.cn-hangzhou.aliyuncs.com/bohai_repo/demo]
-[INFO] Image 72a6d2e10f94: Preparing
-[INFO] Image 4222fe8d2ce7: Preparing
-[INFO] Image 9afc0e59c268: Preparing
-[INFO] Image b83703e07573: Preparing
-[INFO] Image 4222fe8d2ce7: Layer already exists
-[INFO] Image 9afc0e59c268: Layer already exists
-[INFO] Image b83703e07573: Layer already exists
-[INFO] Image 72a6d2e10f94: Pushing
-[INFO] Image 72a6d2e10f94: Pushed
-[INFO] 1.1.0-SNAPSHOT: digest: sha256:091d1dba02edc1754040c34d716001c5c4f30e5059fe387df6572cc1722117d1 size: 1159
+# 编译后，jar制品位置位于：`target/` 下
+mvn -U clean install -D maven.test.skip=true -D maven.javadoc.skip=true -am package
 ```
 
-### Apple Silicon M1 CPU
+
+编译jar包同时触发编译docker制品(不推送镜像)
 
 ```shell
-$ brew install socat
-$ nohup socat TCP-LISTEN:2375,range=127.0.0.1/32,reuseaddr,fork UNIX-CLIENT:/var/run/docker.sock &> /dev/null &
-$ export DOCKER_HOST=tcp://127.0.0.1:2375
+mvn -U clean install -D maven.test.skip=true -D maven.javadoc.skip=true -am -P docker
 ```
 
-## use apollo
-
-### deploy apollo for docker
-
-#### 一、create_db
+编译jar包同时触发编译docker制品(推送镜像)
 
 ```shell
-CREATE USER 'apollo'@'%' identified BY 'xxxxxxxxxx';
-CREATE DATABASE IF NOT EXISTS ApolloConfigDB DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-CREATE DATABASE IF NOT EXISTS ApolloPortalDB DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-GRANT ALL PRIVILEGES ON ApolloConfigDB.* TO apollo@"%"; 
-GRANT ALL PRIVILEGES ON ApolloPortalDB.* TO apollo@"%"; 
+mvn -U clean install -D maven.test.skip=true -D maven.javadoc.skip=true -am -P docker deploy
 ```
-
-#### 二、init_db
+### 启动制品
 
 ```shell
-# import sql file
-apolloconfigdb: https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloconfigdb.sql
-apolloportaldb: https://github.com/apolloconfig/apollo/blob/master/scripts/sql/apolloportaldb.sql
+# jar包启动
+java -jar target/demo-service-1.0.0-SNAPSHOT.jar
+
+# docker制品启动
+docker run -itd demo-service \
+-e Xmx=1024m \
+-e Xms=512m \
+-e Xmn=256m \
+-e Xml=128m \
+-p 8080:8080 \
+-p 8443:8443 \
+registry.cn-hangzhou.aliyuncs.com/bohai_repo/demo-service:1.0.0-SNAPSHOT
 ```
 
-#### 三、deploy 
-```shell
-# --net=host 
-version=latest
-docker pull apolloconfig/apollo-configservice:${version}
-docker rm -f apollo-configservice
-docker run --net=host \
-    -e SPRING_DATASOURCE_URL="jdbc:mysql://xxxx:3306/ApolloConfigDB?characterEncoding=utf8" \
-    -e SPRING_DATASOURCE_USERNAME=apollo -e SPRING_DATASOURCE_PASSWORD=xxxx \
-    -d -v /data/apollo/configservice/logs:/opt/logs --name apollo-configservice apolloconfig/apollo-configservice:${version}
+### 访问
 
-version=latest
-docker pull apolloconfig/apollo-adminservice:${version}
-docker rm -f apollo-adminservice
-docker run -p 8090:8090 \
-    -e SPRING_DATASOURCE_URL="jdbc:mysql://xxxx:3306/ApolloConfigDB?characterEncoding=utf8" \
-    -e SPRING_DATASOURCE_USERNAME=apollo -e SPRING_DATASOURCE_PASSWORD=xxxx \
-    -d -v /data/apollo/adminservice/logs:/opt/logs --name apollo-adminservice apolloconfig/apollo-adminservice:${version}
-
-version=latest
-docker pull apolloconfig/apollo-portal:${version}
-docker rm -f apollo-portal
-docker run -p 8070:8070 \
-    -e SPRING_DATASOURCE_URL="jdbc:mysql://xxxx:3306/ApolloPortalDB?characterEncoding=utf8" \
-    -e SPRING_DATASOURCE_USERNAME=apollo -e SPRING_DATASOURCE_PASSWORD=xxxxx \
-    -e APOLLO_PORTAL_ENVS=dev \
-    -e DEV_META=http://192.168.60.229:8080 \
-    -e SPRING.PROFILES.ACTIVE=github \
-    -d -v /data/apollo/portal/logs:/opt/logs --name apollo-portal apolloconfig/apollo-portal:${version}
-```
-
-### add dependency with pom
-
-```xml
-        <dependency>
-            <groupId>com.ctrip.framework.apollo</groupId>
-            <artifactId>apollo-client</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-```
-
-### add new class: ApolloApplocation
+访问主程序
 
 ```shell
-package com.bohai.helloworld;
-
-import com.ctrip.framework.apollo.ConfigService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class ApolloApplocation {
-    @RestController
-    @RequestMapping(path = "/config/")
-    public class ApolloConfigurationController {
-
-        @RequestMapping(path = "/{key}")
-        public String getConfigForKey(@PathVariable("key") String key){
-            return ConfigService.getAppConfig().getProperty( key, "undefined");
-        }
-    }
-}
+curl 127.0.0.1:8080
 ```
 
-### add properties config file
-
-file path: src/main/resources/application.properties
+访问程序监控接口
 
 ```shell
-app.id=9025.uni-all-server.uni.ytzh
-# apollo eureka url
-apollo.meta=http://192.168.60.229:8080
-
-apollo.bootstrap.enabled = true
-apollo.bootstrap.eagerLoad.enabled=false
+curl http://127.0.0.1:8443/actuator/metrics
 ```
 
-### requests
+访问程序健康检查接口
 
 ```shell
-curl http://127.0.0.1/config/{name}
+curl http://127.0.0.1:8443/actuator/health
 ```
 
-## use actuator
 
-### add dependency with pom
-
-```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-```
-
-### add config
-
-src/main/resources/application.yml
-
-```yaml
-management:
-  server:
-    port: 8443
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-      base-path: /actuator
-  endpoint:
-    shutdown:
-      enabled: true
-    health:
-      show-details: always
-```
-
-### request
+访问程序下线接口(执行后，程序将退出运行)
 
 ```shell
-curl http://127.0.0.1:8443/actuator/
+curl -X POST http://127.0.0.1:8443/actuator/shutdown
 ```
-
-## use eureka
-
-TODO
-
-## use kubernetes serviceaccont
-
-TODO
