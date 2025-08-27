@@ -3,6 +3,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: set-env-java8
