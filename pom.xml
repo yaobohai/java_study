@@ -92,19 +92,25 @@
                   <imageTags>
                     <imageTag>${project.version}</imageTag>
                   </imageTags>
-                  <forceTags>true</forceTags>
                   <!-- dockerfile中的ARG参数 -->
+                <resources>
+                    <resource>
+                        <!-- 复制的源目录: target/ -->
+                        <directory>${project.build.directory}</directory>
+                        <!-- 复制到构建上下文的目标路径: / (根目录) -->
+                        <targetPath>/</targetPath>
+                        <!-- 要复制的文件: 最终生成的 JAR 包 -->
+                        <include>${project.build.finalName}.jar</include>
+                    </resource>
+                </resources>
+                  <buildArgs>
+                      <!-- 构建出jar包制品名称 -->
+                      <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                  </buildArgs>
+                  <forceTags>true</forceTags>
                   <labels>
                     <label>VERSION=${project.version}</label>
                   </labels>
-                  <resources>
-                    <resource>
-                      <targetPath>/</targetPath>
-                      <directory>${project.build.directory}</directory>
-                      <include>${project.artifactId}-${project.version}-shaded.jar</include>
-                      <!-- 将制品添加到docker build context -->
-                    </resource>
-                  </resources>
                 </configuration>
               </execution>
               <execution>

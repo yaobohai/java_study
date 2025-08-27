@@ -63,7 +63,7 @@ mvn -U clean install -D maven.test.skip=true -D maven.javadoc.skip=true -am -P d
 java -jar target/demo-service-1.0.0-SNAPSHOT.jar
 
 # docker制品启动
-docker run -itd demo-service \
+docker run -itd --name demo-service \
 -e Xmx=1024m \
 -e Xms=512m \
 -e Xmn=256m \
@@ -78,7 +78,7 @@ registry.cn-hangzhou.aliyuncs.com/bohai_repo/demo-service:1.0.0-SNAPSHOT
 访问主程序
 
 ```shell
-curl 127.0.0.1:8080
+curl http://127.0.0.1:8080
 ```
 
 访问程序监控接口
