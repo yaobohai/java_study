@@ -1,7 +1,7 @@
 name: Actions
 on: [push]
 jobs:
-  build-runner:
+  build:
     runs-on: ubuntu-latest
     - name: Checkout Repository
       uses: actions/checkout@v2
