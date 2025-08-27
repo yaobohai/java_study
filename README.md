@@ -1,4 +1,7 @@
-## java springboot devops
+## ![release](https://github.com/yaobohai/java_study/actions/workflows/actions-build.yaml/badge.svg) java springboot devops 
+
+最新构建状态：
+
 
 ### 目录结构
 
