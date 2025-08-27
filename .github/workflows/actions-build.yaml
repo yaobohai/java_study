@@ -1,5 +1,5 @@
 name: Actions
-on: [push
+on: [push]
 jobs:
   build-runner:
     runs-on: ubuntu-latest
@@ -12,5 +12,3 @@ jobs:
         distribution: 'adopt'
     - name: maven build
       run: mvn -U clean install -D maven.test.skip=true -D maven.javadoc.skip=true -am package
-      env:
-        TZ: 'Asia/Shanghai' # 设置时区
