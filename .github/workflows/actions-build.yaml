@@ -14,4 +14,4 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
     - name: maven build
-      run: mvn -U clean install -D maven.test.skip=true -D maven.javadoc.skip=true -am package
+      run: mvn -U clean install -D maven.test.skip=true -D maven.javadoc.skip=true -am -P docker
