@@ -84,7 +84,13 @@ curl http://127.0.0.1:8080
 访问程序监控接口
 
 ```shell
-curl http://127.0.0.1:8443/actuator/metrics
+curl http://127.0.0.1:8443/actuator/prometheus
+```
+
+访问环境变量接口
+
+```shell
+curl http://127.0.0.1:8443/actuator/env
 ```
 
 访问程序健康检查接口
